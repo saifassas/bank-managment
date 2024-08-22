@@ -1,0 +1,88 @@
+<div class="wrapper">
+  <div *ngIf="currentRoute != '/login'" class="menu-icon" (click)="toggleSidebar()">
+    <i class="material-icons" [ngClass]="{'icon-open': isSidebarOpen, 'icon-closed': !isSidebarOpen}">
+      menu
+    </i>
+  </div>
+
+  <div *ngIf="currentRoute != '/login' && currentRoute != '/register'" class="sidebar"
+    [ngClass]="{'sidebar-closed': !isSidebarOpen}">
+
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <!-- Customer Menu -->
+        <li class="nav-item">
+          <a (click)="toggleCustomerMenu()" class="nav-link d-flex justify-content-between align-items-center">
+            <span>
+              <i class="material-icons">people</i>
+              Customers
+            </span>
+            <i class="material-icons arrow"
+              [ngClass]="{'arrow-down': isCustomerMenuOpen, 'arrow-right': !isCustomerMenuOpen}">
+              expand_more
+            </i>
+          </a>
+          <ul *ngIf="isCustomerMenuOpen" class="submenu">
+            <li class="nav-item">
+              <a routerLink="Customers" routerLinkActive="active" class="nav-link">
+                <i class="material-icons">list</i>
+                Customers list
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="create-customer" routerLinkActive="active" class="nav-link">
+                <i class="material-icons">add</i>
+                Add customer
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Account Menu -->
+        <li class="nav-item">
+          <a (click)="toggleAccountMenu()" class="nav-link d-flex justify-content-between align-items-center">
+            <span>
+              <i class="material-icons">account_balance</i>
+              Accounts
+            </span>
+            <i class="material-icons arrow"
+              [ngClass]="{'arrow-down': isAccountMenuOpen, 'arrow-right': !isAccountMenuOpen}">
+              expand_more
+            </i>
+          </a>
+          <ul *ngIf="isAccountMenuOpen" class="submenu">
+            <li class="nav-item">
+              <a routerLink="accounts" routerLinkActive="active" class="nav-link">
+                <i class="material-icons">list</i>
+                Accounts list
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="create-account" routerLinkActive="active" class="nav-link">
+                <i class="material-icons">add</i>
+                Add account
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Logout Menu -->
+        <li class="nav-item">
+          <a (click)="logout()" class="nav-link d-flex justify-content-between align-items-center">
+            <span>
+              <i class="material-icons">logout</i>
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1 class="text-center">{{title}}</h1>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

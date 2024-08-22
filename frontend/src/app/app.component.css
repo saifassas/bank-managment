@@ -1,0 +1,190 @@
+/* Wrapper for the whole content */
+.wrapper {
+    display: flex;
+  }
+  
+  /* Menu Icon Styles */
+  .menu-icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    color: #333;
+    font-size: 30px;
+  }
+  
+  .menu-icon i {
+    font-size: 30px;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
+  
+  .sidebar-closed {
+    transform: translateX(-250px);
+  }
+  
+  .sidebar-wrapper {
+    padding: 15px;
+  }
+  
+  .nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    padding: 10px 0;
+  }
+  
+  .nav-item .nav-link {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+  }
+  
+  .nav-item .nav-link i {
+    margin-right: 10px;
+  }
+  
+  .nav-item .nav-link:hover {
+    background-color: #575757;
+    border-radius: 4px;
+  }
+  
+  .active .nav-link {
+    background-color: #007bff;
+    border-radius: 4px;
+  }
+  
+  /* Main Content Styles */
+  .main-content {
+    flex: 1;
+    margin-left: 0; /* Adjusted for sliding sidebar */
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .sidebar-closed ~ .main-content {
+    margin-left: 0;
+  }
+  
+  .main-content {
+    margin-left: 250px;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .sidebar-closed ~ .footer {
+    margin-left: 0;
+  }
+  
+  .footer .container {
+    text-align: center;
+  }
+  
+  /* Header Styles */
+  h1.text-center {
+    color: #333;
+    margin-top: 20px;
+  }
+  .icon-open {
+    color: white;
+  }
+  
+  .icon-closed {
+    color: black;
+  }
+  
+  .icon-open {
+    color: white;
+  }
+  
+  .icon-closed {
+    color: black;
+  }
+  
+  
+  /* Arrow Icons */
+/* Arrow Icons */
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 20px; /* Increase the size for better visibility */
+  color: #ffffff; /* White color to match dark theme */
+}
+
+.arrow-up {
+  transform: rotate(0deg); /* Upward direction */
+}
+
+.arrow-down {
+  transform: rotate(180deg);
+}
+
+/* Submenu Styling */
+.submenu {
+  padding-left: 25px;
+  margin-left: 10px;
+  
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.submenu .nav-item {
+  margin-bottom: 5px; /* Spacing between submenu items */
+}
+
+.submenu .nav-link {
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #ffffff; /* White text for readability */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submenu .nav-link:hover {
+  background-color: #495057; /* Darken background on hover */
+  color: #f8f9fa; /* Lighten text on hover */
+}
+
+/* Additional styling for active links */
+.nav-link.active {
+  background-color: #495057;
+  color: #f8f9fa;
+  font-weight: bold;
+}
+.nav-item .logout-icon {
+  color: red;
+  cursor: pointer;
+}
+
+.nav-item .logout-icon:hover {
+  color: darkred;
+}

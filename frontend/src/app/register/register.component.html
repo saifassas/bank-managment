@@ -1,0 +1,83 @@
+<div style=" margin-right: 200px; height: 100vh;">
+    <form class="border p-4 rounded shadow-lg bg-white" style="max-width: 400px; margin: auto; margin-top: 50px;"
+        #registerForm="ngForm">
+        <!-- Form Header -->
+        <h3 class="text-center mb-4">Create Account</h3>
+
+        <!-- First Name Field -->
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" required [(ngModel)]="user.first_name"
+                name="firstName" #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched">
+            <div *ngIf="firstName.invalid && firstName.touched" class="invalid-feedback">
+                <div *ngIf="firstName.errors?.['required']">First Name is required.</div>
+            </div>
+        </div>
+
+        <!-- Last Name Field -->
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user.last_name" name="lastName"
+                #lastName="ngModel">
+        </div>
+
+        <!-- Username Field -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username"
+                #username="ngModel" [class.is-invalid]="username.invalid && username.touched">
+            <div *ngIf="username.invalid && username.touched" class="invalid-feedback">
+                <div *ngIf="username.errors?.['required']">Username is required.</div>
+                <div *ngIf="username.errors?.['pattern']">Username must be alphanumeric.</div>
+            </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" required [(ngModel)]="user.password"
+                name="password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+            <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+                <div *ngIf="password.errors?.['required']">Password is required.</div>
+                <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters long.</div>
+            </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" required [(ngModel)]="user.email" name="email"
+                #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+            <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+                <div *ngIf="email.errors?.['required']">Email is required.</div>
+                <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+            </div>
+        </div>
+
+        <!-- Gender Field -->
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" required [(ngModel)]="user.gender" name="gender" #gender="ngModel"
+                [class.is-invalid]="gender.invalid && gender.touched">
+                <option value="" disabled>Select Gender</option>
+                <option [ngValue]="true">Male</option>
+                <option [ngValue]="false">Female</option>
+            </select>
+            <div *ngIf="gender.invalid && gender.touched" class="invalid-feedback">
+                <div *ngIf="gender.errors?.['required']">Gender selection is required.</div>
+            </div>
+        </div>
+
+        <!-- Success and Error Messages -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+        </div>
+
+        <!-- Submit Button -->
+        <button (click)="onSubmit()" style="margin-top: 10px;" type="button" class="btn btn-success w-100"
+            [disabled]="registerForm.invalid">Submit</button>
+    </form>
+</div>
